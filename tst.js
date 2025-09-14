@@ -1,5 +1,9 @@
-function getLastDigit(value) {
-  return value % 10;
-}
+function getSumOfDigits(num) {
+  let sum = num.toString()[0];
 
-console.log(getLastDigit(115));
+  for (let i = 1; i <= num.toString().length - 1; i += 1) {
+    sum += num.toString()[i];
+  }
+  return sum;
+}
+console.log(getSumOfDigits(123));
