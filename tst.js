@@ -7,3 +7,6 @@ function getSumOfDigits(num) {
   return sum;
 }
 console.log(getSumOfDigits(123));
+
+// const sine = num - num ** 3 / 6 + num ** 5 / 120 - num ** 7 / 5040;
+// return Math.round(sine);

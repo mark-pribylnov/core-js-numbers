@@ -324,8 +324,42 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  if (num === 1 || num === 2) return true;
+  if (num === 0) return false;
+
+  function convertToBinary(input, targetBase) {
+    const indices = [];
+    let step = 0;
+    const base = targetBase.length;
+
+    function calc(number) {
+      if (number === 0 && step > 0) return;
+
+      step += 1;
+
+      const quotient = Math.floor(number / base);
+      const remainder = number - base * quotient;
+      if (remainder < base) {
+        indices.unshift(remainder);
+
+        calc(quotient);
+      }
+    }
+
+    calc(input);
+
+    let finalString = '';
+    indices.forEach((index) => {
+      finalString += targetBase[index];
+    });
+
+    return finalString;
+  }
+
+  const binary = convertToBinary(num, '01');
+
+  return !binary.slice(1).includes('1');
 }
 
 /**
@@ -338,8 +372,8 @@ function isPowerOfTwo(/* num */) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
 
 /**
