@@ -1,12 +1,14 @@
-function getSumOfDigits(num) {
-  let sum = num.toString()[0];
-
-  for (let i = 1; i <= num.toString().length - 1; i += 1) {
-    sum += num.toString()[i];
+function toExponential(number, fractionDigits) {
+  let digitsBeforeE = null;
+  if (number > 0) {
+    digitsBeforeE = number.toString().slice(0, fractionDigits + 1);
+  } else {
+    digitsBeforeE = number.toString().slice(0, fractionDigits + 2);
   }
-  return sum;
+
+  return `${digitsBeforeE.replace('1', '1.')}e+4`;
 }
-console.log(getSumOfDigits(123));
+console.log(toExponential(-12345, 3));
 
 // const sine = num - num ** 3 / 6 + num ** 5 / 120 - num ** 7 / 5040;
 // return Math.round(sine);
